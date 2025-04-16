@@ -31,6 +31,7 @@
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-left: 10px;
   }
   
   button:hover {
@@ -112,4 +113,24 @@
   button.copy-link-btn:hover {
     background-color: #e0a800;
   }
+
+  button.copy-link-btn {
+    background-color: #ffc107;
+    color: #333;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button.copy-link-btn:hover {
+    background-color: #e0a800;
+  }
+  
+  button.copy-link-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
   

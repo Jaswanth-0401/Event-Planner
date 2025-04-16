@@ -21,6 +21,19 @@ const EventDetails: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [isEventPassed, setIsEventPassed] = useState<boolean>(false);
 
+  const handleCopyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      setMessage('Link copied!');
+      setTimeout(() => {
+        setMessage('');
+      }, 2000); // Remove the message after 2 seconds
+    } catch (err) {
+      console.error('Error copying link:', err);
+      setMessage('Failed to copy link.');
+    }
+  };
+
   const formatDate = (dateString: string | number | Date) => {
     const date = new Date(dateString);
     return date.toLocaleString("en-US", {
@@ -169,6 +182,13 @@ const EventDetails: React.FC = () => {
     setIsModalOpen(false);
   };
 
+  // Close modal if clicked outside
+  const handleModalOverlayClick = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget) {
+      handleCloseModal();
+    }
+  };
+
   if (!event) return <p>Loading event details...</p>;
 
   return (
@@ -196,15 +216,14 @@ const EventDetails: React.FC = () => {
 
       {/* Modal */}
       {isModalOpen && (
-        <div className="modal-overlay">
+        <div className="modal-overlay" onClick={handleModalOverlayClick}>
           <div className="modal-content">
-            <button className="close-modal" onClick={handleCloseModal}>X</button>
             <h3>Share Event</h3>
             <p>Share the event using the following links:</p>
             <ul>
               <li>
-                <a href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`} target="_blank" rel="noopener noreferrer">
-                  Facebook
+                <a href={`https://www.whatsapp.com/sharer/sharer.php?u=${window.location.href}`} target="_blank" rel="noopener noreferrer">
+                  Whatsapp
                 </a>
               </li>
               <li>
@@ -218,7 +237,13 @@ const EventDetails: React.FC = () => {
                 </a>
               </li>
               <li>
-                <button onClick={() => navigator.clipboard.writeText(window.location.href)}>Copy Link</button>
+                  <button
+                    className="copy-link-btn"
+                    onClick={handleCopyLink}
+                    disabled={isEventPassed}
+                  >
+                    {message === 'Link copied!' ? 'Link Copied' : 'Copy Link'}
+                  </button>
               </li>
             </ul>
           </div>
