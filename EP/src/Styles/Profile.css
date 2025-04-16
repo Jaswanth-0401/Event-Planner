@@ -1,0 +1,54 @@
+/* Profile Page Styles */
+.profile-page {
+    padding: 24px;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-page h2 {
+    text-align: center;
+    margin-bottom: 16px;
+    font-size: 28px;
+  }
+  
+  .profile-info p {
+    font-size: 18px;
+    margin: 12px 0;
+  }
+  
+  .profile-info input {
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin-top: 4px;
+  }
+  
+  .profile-info input:focus {
+    border-color: #2196f3;
+    box-shadow: 0 0 3px rgba(33, 150, 243, 0.5);
+  }
+  
+  .password-field {
+    margin-top: 12px;
+  }
+  
+  .edit-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #2196f3;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .edit-btn:hover {
+    background-color: #1976d2;
+  }
+  
